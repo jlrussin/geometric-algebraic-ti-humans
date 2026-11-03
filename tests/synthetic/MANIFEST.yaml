@@ -1,0 +1,94 @@
+# sha256 digest, number of rows and columns of every synthetic table, by path under
+# tests/synthetic/. Written by tests/synthetic/make_tables.py.
+experiment1/sessions.parquet:
+  sha256: d1716942a5ccfe7fdfc03cd67c5863d19d1865c7b39ab2191a59d7310bfc03b2
+  rows: 10
+  columns:
+  - participant
+  - session_index
+  - assignment_id
+  - start_order
+  - test_order
+  - is_completed
+  - failed_comprehension
+  - n_saved_rows
+  - stream_offset
+experiment1/trials.parquet:
+  sha256: f23d45257f86f64060dc975d03776735a81ae7a19dc72e47c5a2b5d5e82c8105
+  rows: 1740
+  columns:
+  - participant
+  - session_index
+  - assignment_id
+  - phase
+  - is_retry
+  - trial_index
+  - symbolic_distance
+  - query_left
+  - query_right
+  - query_left_rank
+  - query_right_rank
+  - context_display
+  - intervening_distractors
+  - n_context_pairs
+  - displayed_chain
+  - display_slots
+  - inserted_distractors
+  - swapped_item
+  - swap_distractor
+  - icl_ordering
+  - icl_consistent_side
+  - response
+  - rt
+  - is_correct
+  - is_timed_out
+  - is_icl_consistent
+  - is_iwl_consistent
+experiment2/sessions.parquet:
+  sha256: 80a2447f4c83d17895e372d90af3ae2be688cd13cc0753432ca0f1a268c17257
+  rows: 13
+  columns:
+  - participant
+  - session_index
+  - assignment_id
+  - condition
+  - wave
+  - allocation_round
+  - is_completed
+  - n_saved_rows
+  - n_main_questions
+  - schedule_sha256
+experiment2/trials.parquet:
+  sha256: 143a72c07f7896030a775f3e6bec5f7957da12bf786b888901241ba8be7cf100
+  rows: 583
+  columns:
+  - participant
+  - session_index
+  - assignment_id
+  - condition
+  - question_number
+  - block
+  - symbolic_distance
+  - real_world_distance
+  - question_type
+  - item_pair
+  - query_left
+  - query_right
+  - correct_answer
+  - real_world_answer
+  - response_side
+  - rt
+  - is_timed_out
+  - is_correct
+  - is_real_world_consistent
+  - statements_text
+  - context_ordering
+experiment2/questionnaire.parquet:
+  sha256: f9bdb29d0307cc12269c767cad7f8946c08d78b7a618061390b2251004b93738
+  rows: 12
+  columns:
+  - participant
+  - session_index
+  - condition
+  - statements_true
+  - knowledge_use

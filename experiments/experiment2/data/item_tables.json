@@ -1,0 +1,1451 @@
+{
+  "schema_version": "1.0.0",
+  "table_version": "2026-09-30.1",
+  "source_hash": "sha256:0e1595e1bd94823ef646126d748abdfbc7ce293c5dcabbe5eefb9efb5745d7de",
+  "domains": [
+    {
+      "domain_id": "animal_weight",
+      "enabled": true,
+      "relation_phrase": "is heavier than",
+      "query_phrase": "is heavier",
+      "query_emphasis": "heavier",
+      "no_context_query_phrase": "is heavier",
+      "magnitude_unit": "log10_grams",
+      "has_norms": true,
+      "norm_sources": [
+        "mass_extract",
+        "grand2022_weight",
+        "thingsplus_size"
+      ],
+      "slot_tables": {
+        "9": [
+          {
+            "slot": 1,
+            "items": [
+              {
+                "item_id": "ant",
+                "name": "ant",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": -2.5229,
+                "has_norms": true,
+                "norms": {
+                  "grand_weight_z": -1.168,
+                  "things_size": 116.0111,
+                  "things_size_sd": 13.99
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "mosquito",
+                "name": "mosquito",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": -2.6021,
+                "has_norms": true,
+                "norms": {
+                  "grand_weight_z": -1.1562,
+                  "things_size": 117.766,
+                  "things_size_sd": 16.04
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "fly",
+                "name": "fly",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": -1.8239,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 127.186,
+                  "things_size_sd": 10.9474
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "bee",
+                "name": "bee",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": -1.0,
+                "has_norms": true,
+                "norms": {
+                  "grand_weight_z": -1.1542,
+                  "things_size": 138.6087,
+                  "things_size_sd": 14.8031
+                },
+                "eligible": false,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "ladybug",
+                "name": "ladybug",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": -1.5229,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 126.5444,
+                  "things_size_sd": 18.1402
+                },
+                "eligible": false,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              }
+            ]
+          },
+          {
+            "slot": 2,
+            "items": [
+              {
+                "item_id": "grasshopper",
+                "name": "grasshopper",
+                "article": "the",
+                "name_chars": 11,
+                "magnitude": -0.301,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 156.1837,
+                  "things_size_sd": 16.2537
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "butterfly",
+                "name": "butterfly",
+                "article": "the",
+                "name_chars": 9,
+                "magnitude": -0.5229,
+                "has_norms": true,
+                "norms": {
+                  "grand_weight_z": -1.1544,
+                  "things_size": 166.6023,
+                  "things_size_sd": 19.8367
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              },
+              {
+                "item_id": "dragonfly",
+                "name": "dragonfly",
+                "article": "the",
+                "name_chars": 9,
+                "magnitude": -0.3979,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 163.1705,
+                  "things_size_sd": 19.4398
+                },
+                "eligible": true,
+                "flags": [
+                  "magnitude_estimated"
+                ]
+              }
+            ]
+          },
+          {
+            "slot": 3,
+            "items": [
+              {
+                "item_id": "finch",
+                "name": "finch",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 1.0799,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 1.0799
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "mouse",
+                "name": "mouse",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 1.2856,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 1.2856,
+                  "grand_weight_z": -0.9667,
+                  "things_size": 191.0435,
+                  "things_size_sd": 22.2718
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "canary",
+                "name": "canary",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 1.3856,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 1.3856
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "sparrow",
+                "name": "sparrow",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 1.4134,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 1.4134
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 4,
+            "items": [
+              {
+                "item_id": "rat",
+                "name": "rat",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 2.4771,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 2.4771,
+                  "things_size": 207.75,
+                  "things_size_sd": 17.8662
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "pigeon",
+                "name": "pigeon",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 2.552,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 2.552,
+                  "things_size": 226.593,
+                  "things_size_sd": 13.5955
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "crow",
+                "name": "crow",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 2.6199,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 2.6199,
+                  "grand_weight_z": -0.6869,
+                  "things_size": 231.5104,
+                  "things_size_sd": 16.367
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "squirrel",
+                "name": "squirrel",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 2.7267,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 2.7267,
+                  "things_size": 224.7553,
+                  "things_size_sd": 19.9839
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 5,
+            "items": [
+              {
+                "item_id": "cat",
+                "name": "cat",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 3.4601,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 3.4601,
+                  "things_size": 245.7436,
+                  "things_size_sd": 17.0729
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "goose",
+                "name": "goose",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 3.478,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 3.478,
+                  "things_size": 261.3696,
+                  "things_size_sd": 14.1396
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "fox",
+                "name": "fox",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 3.6831,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 3.6831,
+                  "things_size": 267.6064,
+                  "things_size_sd": 14.537
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "turkey",
+                "name": "turkey",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 3.7724,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 3.7724,
+                  "things_size": 259.6395,
+                  "things_size_sd": 18.1827
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "raccoon",
+                "name": "raccoon",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 3.7782,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 3.7782,
+                  "things_size": 251.5222,
+                  "things_size_sd": 15.6735
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 6,
+            "items": [
+              {
+                "item_id": "wolf",
+                "name": "wolf",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 4.5018,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 4.5018,
+                  "things_size": 290.4783,
+                  "things_size_sd": 14.4314
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "sheep",
+                "name": "sheep",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 4.699,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 4.699,
+                  "things_size": 294.6667,
+                  "things_size_sd": 16.1657
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "goat",
+                "name": "goat",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 4.7344,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 4.7344,
+                  "things_size": 286.5795,
+                  "things_size_sd": 13.6074
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "deer",
+                "name": "deer",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 4.8802,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 4.8802,
+                  "things_size": 309.8889,
+                  "things_size_sd": 19.7153
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "pig",
+                "name": "pig",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 4.9828,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 4.9828,
+                  "grand_weight_z": 0.3747,
+                  "things_size": 282.9787,
+                  "things_size_sd": 18.5062
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 7,
+            "items": [
+              {
+                "item_id": "horse",
+                "name": "horse",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 5.4771,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.4771,
+                  "grand_weight_z": 0.9092,
+                  "things_size": 341.8261,
+                  "things_size_sd": 18.8592
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "zebra",
+                "name": "zebra",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 5.5227,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.5227,
+                  "things_size": 325.2778,
+                  "things_size_sd": 19.0115
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "moose",
+                "name": "moose",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 5.5866,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.5866,
+                  "grand_weight_z": 0.8749,
+                  "things_size": 341.7875,
+                  "things_size_sd": 26.8495
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "camel",
+                "name": "camel",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 5.7183,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.7183,
+                  "grand_weight_z": 0.7852,
+                  "things_size": 348.0729,
+                  "things_size_sd": 22.0176
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "cow",
+                "name": "cow",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 5.8751,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.8751,
+                  "things_size": 330.6786,
+                  "things_size_sd": 18.0365,
+                  "konkle_log10_cm": 2.3288
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "bison",
+                "name": "bison",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 5.7956,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.7956,
+                  "things_size": 333.8936,
+                  "things_size_sd": 20.6139
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "bear",
+                "name": "bear",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 5.1681,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 5.1681,
+                  "things_size": 323.375,
+                  "things_size_sd": 21.076
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 8,
+            "items": [
+              {
+                "item_id": "hippo",
+                "name": "hippo",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 6.1865,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 6.1865,
+                  "things_size": 354.5816,
+                  "things_size_sd": 23.2635
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "rhino",
+                "name": "rhino",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 6.2048,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 6.2048,
+                  "grand_weight_z": 1.387,
+                  "things_size": 356.5795,
+                  "things_size_sd": 25.1763
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "elephant",
+                "name": "elephant",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 6.5488,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 6.5488,
+                  "grand_weight_z": 1.4936,
+                  "things_size": 375.9,
+                  "things_size_sd": 18.8721
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 9,
+            "items": [
+              {
+                "item_id": "gray_whale",
+                "name": "gray whale",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 7.4548,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 7.4548,
+                  "grand_weight_z": 1.6268,
+                  "things_size": 398.7766,
+                  "things_size_sd": 25.8505
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "sperm_whale",
+                "name": "sperm whale",
+                "article": "the",
+                "name_chars": 11,
+                "magnitude": 7.4548,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 7.4548,
+                  "grand_weight_z": 1.6268,
+                  "things_size": 398.7766,
+                  "things_size_sd": 25.8505
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "humpback_whale",
+                "name": "humpback whale",
+                "article": "the",
+                "name_chars": 14,
+                "magnitude": 7.4771,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 7.4771,
+                  "grand_weight_z": 1.6268,
+                  "things_size": 398.7766,
+                  "things_size_sd": 25.8505
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "blue_whale",
+                "name": "blue whale",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 8.1884,
+                "has_norms": true,
+                "norms": {
+                  "mass_log10_g": 8.1884,
+                  "grand_weight_z": 1.6268,
+                  "things_size": 398.7766,
+                  "things_size_sd": 25.8505
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          }
+        ]
+      },
+      "forbidden_adjacent_pairs": [
+        [
+          "horse",
+          "cow"
+        ],
+        [
+          "mouse",
+          "sparrow"
+        ],
+        [
+          "elephant",
+          "hippo"
+        ],
+        [
+          "bear",
+          "horse"
+        ],
+        [
+          "pig",
+          "sheep"
+        ],
+        [
+          "horse",
+          "moose"
+        ],
+        [
+          "horse",
+          "camel"
+        ]
+      ]
+    },
+    {
+      "domain_id": "object_size",
+      "enabled": true,
+      "relation_phrase": "is bigger than",
+      "query_phrase": "is bigger",
+      "query_emphasis": "bigger",
+      "no_context_query_phrase": "is bigger",
+      "magnitude_unit": "log10_cm",
+      "has_norms": true,
+      "norm_sources": [
+        "thingsplus_size",
+        "konkle2011"
+      ],
+      "slot_tables": {
+        "9": [
+          {
+            "slot": 1,
+            "items": [
+              {
+                "item_id": "coin",
+                "name": "coin",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 0.5749,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 146.3229,
+                  "things_size_sd": 8.2491
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "marble",
+                "name": "marble",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 0.5295,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 142.1556,
+                  "things_size_sd": 12.1617
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "dice",
+                "name": "dice",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 0.574,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 146.2381,
+                  "things_size_sd": 13.8349,
+                  "konkle_log10_cm": 0.4515
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "button",
+                "name": "button",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 0.5384,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 142.9688,
+                  "things_size_sd": 15.5951,
+                  "konkle_log10_cm": 0.4515
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 2,
+            "items": [
+              {
+                "item_id": "lipstick",
+                "name": "lipstick",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 0.913,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 177.3409,
+                  "things_size_sd": 14.8088
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "matchbox",
+                "name": "matchbox",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 0.9196,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 177.9432,
+                  "things_size_sd": 15.5183
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "egg",
+                "name": "egg",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 0.9494,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 180.6829,
+                  "things_size_sd": 8.6709,
+                  "konkle_log10_cm": 1.0
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "pocket_watch",
+                "name": "pocket watch",
+                "article": "the",
+                "name_chars": 12,
+                "magnitude": 0.9504,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 180.7717,
+                  "things_size_sd": 10.2966
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "lighter",
+                "name": "lighter",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 0.918,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 177.7979,
+                  "things_size_sd": 13.6925
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "key",
+                "name": "key",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 0.788,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 165.8721,
+                  "things_size_sd": 12.1925,
+                  "konkle_log10_cm": 0.8266
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "whistle",
+                "name": "whistle",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 0.7516,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 162.5341,
+                  "things_size_sd": 12.9365
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 3,
+            "items": [
+              {
+                "item_id": "baseball",
+                "name": "baseball",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 1.1654,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 200.5,
+                  "things_size_sd": 6.8032,
+                  "konkle_log10_cm": 1.1048
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "mug",
+                "name": "mug",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 1.308,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 213.575,
+                  "things_size_sd": 12.6128
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "wallet",
+                "name": "wallet",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 1.2093,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 204.5222,
+                  "things_size_sd": 13.078
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "phone",
+                "name": "phone",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 1.3228,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 214.9348,
+                  "things_size_sd": 15.0889
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "calculator",
+                "name": "calculator",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 1.2801,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 211.0213,
+                  "things_size_sd": 12.2576
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 4,
+            "items": [
+              {
+                "item_id": "football",
+                "name": "football",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 1.5674,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 237.3778,
+                  "things_size_sd": 7.2591
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "volleyball",
+                "name": "volleyball",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 1.5981,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 240.1957,
+                  "things_size_sd": 6.346
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "toaster",
+                "name": "toaster",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 1.6746,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 247.2073,
+                  "things_size_sd": 8.1639
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "laptop",
+                "name": "laptop",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 1.7151,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 250.9239,
+                  "things_size_sd": 9.3938
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "boot",
+                "name": "boot",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 1.5973,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 240.12,
+                  "things_size_sd": 9.3173
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 5,
+            "items": [
+              {
+                "item_id": "suitcase",
+                "name": "suitcase",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 1.9411,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 271.6596,
+                  "things_size_sd": 9.4063
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "guitar",
+                "name": "guitar",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 1.9967,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 276.7604,
+                  "things_size_sd": 15.0499
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "fire_hydrant",
+                "name": "fire hydrant",
+                "article": "the",
+                "name_chars": 12,
+                "magnitude": 1.9836,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 275.5556,
+                  "things_size_sd": 10.7059
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "tricycle",
+                "name": "tricycle",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 2.0698,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 283.4643,
+                  "things_size_sd": 14.9223
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "vacuum",
+                "name": "vacuum",
+                "article": "the",
+                "name_chars": 6,
+                "magnitude": 2.0473,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 281.4,
+                  "things_size_sd": 15.0362
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "chair",
+                "name": "chair",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 2.141,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 290.0,
+                  "things_size_sd": 12.026,
+                  "konkle_log10_cm": 2.059
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 6,
+            "items": [
+              {
+                "item_id": "mattress",
+                "name": "mattress",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 2.5682,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 329.1957,
+                  "things_size_sd": 4.8882
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "couch",
+                "name": "couch",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 2.5308,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 325.7619,
+                  "things_size_sd": 12.9846,
+                  "konkle_log10_cm": 2.4141
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "bathtub",
+                "name": "bathtub",
+                "article": "the",
+                "name_chars": 7,
+                "magnitude": 2.383,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 312.2021,
+                  "things_size_sd": 10.5298
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "refrigerator",
+                "name": "refrigerator",
+                "article": "the",
+                "name_chars": 12,
+                "magnitude": 2.3982,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 313.5957,
+                  "things_size_sd": 15.3523,
+                  "konkle_log10_cm": 2.2969
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "piano",
+                "name": "piano",
+                "article": "the",
+                "name_chars": 5,
+                "magnitude": 2.495,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 322.4773,
+                  "things_size_sd": 16.4617,
+                  "konkle_log10_cm": 2.2653
+                },
+                "eligible": true,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 7,
+            "items": [
+              {
+                "item_id": "car",
+                "name": "car",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 2.9202,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 361.4886,
+                  "things_size_sd": 13.1726,
+                  "konkle_log10_cm": 2.7115
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "taxi",
+                "name": "taxi",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 2.9109,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 360.6354,
+                  "things_size_sd": 9.375
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "police_car",
+                "name": "police car",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 2.9171,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 361.2021,
+                  "things_size_sd": 11.7786
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "jeep",
+                "name": "jeep",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 2.9039,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 359.9896,
+                  "things_size_sd": 19.2051
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 8,
+            "items": [
+              {
+                "item_id": "bus",
+                "name": "bus",
+                "article": "the",
+                "name_chars": 3,
+                "magnitude": 3.2554,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 392.2391,
+                  "things_size_sd": 5.5815
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "school_bus",
+                "name": "school bus",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 3.2203,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 389.0222,
+                  "things_size_sd": 11.538,
+                  "konkle_log10_cm": 3.0991
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "garbage_truck",
+                "name": "garbage truck",
+                "article": "the",
+                "name_chars": 13,
+                "magnitude": 3.1988,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 387.0455,
+                  "things_size_sd": 10.0394
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "fire_truck",
+                "name": "fire truck",
+                "article": "the",
+                "name_chars": 10,
+                "magnitude": 3.3091,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 397.1667,
+                  "things_size_sd": 4.8656
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          },
+          {
+            "slot": 9,
+            "items": [
+              {
+                "item_id": "airplane",
+                "name": "airplane",
+                "article": "the",
+                "name_chars": 8,
+                "magnitude": 3.4541,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 410.4681,
+                  "things_size_sd": 16.6751,
+                  "konkle_log10_cm": 3.8818
+                },
+                "eligible": false,
+                "flags": []
+              },
+              {
+                "item_id": "cruise_ship",
+                "name": "cruise ship",
+                "article": "the",
+                "name_chars": 11,
+                "magnitude": 3.566,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 420.73,
+                  "things_size_sd": 22.4061
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "aircraft_carrier",
+                "name": "aircraft carrier",
+                "article": "the",
+                "name_chars": 16,
+                "magnitude": 3.5725,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 421.3295,
+                  "things_size_sd": 23.5782
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "space_shuttle",
+                "name": "space shuttle",
+                "article": "the",
+                "name_chars": 13,
+                "magnitude": 3.5781,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 421.8444,
+                  "things_size_sd": 22.3507
+                },
+                "eligible": true,
+                "flags": []
+              },
+              {
+                "item_id": "ship",
+                "name": "ship",
+                "article": "the",
+                "name_chars": 4,
+                "magnitude": 3.427,
+                "has_norms": true,
+                "norms": {
+                  "things_size": 407.9787,
+                  "things_size_sd": 20.383
+                },
+                "eligible": false,
+                "flags": []
+              }
+            ]
+          }
+        ]
+      },
+      "forbidden_adjacent_pairs": [
+        [
+          "key",
+          "dice"
+        ],
+        [
+          "whistle",
+          "dice"
+        ],
+        [
+          "chair",
+          "refrigerator"
+        ],
+        [
+          "jeep",
+          "garbage_truck"
+        ],
+        [
+          "fire_truck",
+          "ship"
+        ],
+        [
+          "fire_truck",
+          "airplane"
+        ]
+      ]
+    }
+  ]
+}

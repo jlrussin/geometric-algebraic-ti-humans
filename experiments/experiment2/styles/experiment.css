@@ -1,0 +1,960 @@
+/*
+ * Styles of every screen.
+ *
+ * Tokens: --paper, --ink, --muted, --line, --accent, --track, --reminder, --u.
+ * Every size and offset is calc(N * var(--u)), where N is the value in px at
+ * stage scale 1 (a 1024 × 700 window). Proportions and line breaks are
+ * therefore identical at every window size; the scale is capped at 1.35.
+ *
+ * Geometry of the question screen (keys below the answers; at 1024 × 700):
+ *   top band 0–48 (progress track 500 × 6 at y 21–27)
+ *   question 88–120 · answers 140–224 · message slot 236–292
+ *   statements 324–612 (8 × 36) · instruction buttons 636–676
+ * Content changes only by `visibility`, never `display`.
+ */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+:root {
+  /* Contrast ratios are against --paper: at least 3:1 for borders and 6.4:1
+     for text. */
+  --paper: #FAF6F0;   /* background */
+  --ink: #2A2A2A;     /* all text (13.3:1); chosen-answer outline */
+  --muted: #5A554D;   /* "Press space to continue." (6.9:1) */
+  --line: #8C8C86;    /* key-cap, radio and input borders; band hairline (3.1:1) */
+  --accent: #1F5AA6;  /* focus ring, primary buttons, progress fill; never on question text */
+  --track: #E9E2D2;   /* the progress track */
+  --reminder: #5A4400; /* the break screen's bonus reminder (8.6:1) */
+  --u: clamp(1px, min(100vw / 1024, 100vh / 700), 1.35px);
+}
+
+/* ---------------------------------------------------------------- base -- */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: calc(3 * var(--u)) solid var(--accent);
+  outline-offset: calc(2 * var(--u));
+}
+
+/* Questions and instructions: no selection. The consent form stays
+   selectable. */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.consent {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* A virtual 1024 × 700 frame, centered in the window and scaled by --u.
+   Every fixed-layout screen positions its regions inside it. */
+.frame {
+  position: absolute;
+  left: calc(50vw - 512 * var(--u));
+  top: calc(50vh - 350 * var(--u));
+  width: calc(1024 * var(--u));
+  height: calc(700 * var(--u));
+}
+
+/* ------------------------------------------------------- progress band -- */
+
+/* Mounted outside the jsPsych display element; y 0–48 of the window: a
+   very light band with a hairline under it and a 500 × 6 rounded track
+   centered at y 24; no count. Only the fill moves: a short width
+   transition, in the blank between questions. */
+.progress-band {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(48 * var(--u));
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 45%, var(--paper));
+  pointer-events: none;
+}
+
+.progress-track {
+  position: absolute;
+  top: calc(21 * var(--u));
+  left: calc(50% - 250 * var(--u));
+  width: calc(500 * var(--u));
+  height: calc(6 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: var(--track);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: calc(3 * var(--u));
+  background: var(--accent);
+  transition: width 300ms ease;
+}
+
+/* ----------------------------------------------------- question screen -- */
+
+/* Question-screen geometry, in px at stage scale 1 (keys below the
+   answers). Every region offset lives here, relative to the stage top; the
+   answer / key-cap placement is this block
+   plus the "answer units" rules below, nothing else. The stage runs from the
+   question to the statements and is centered vertically in the frame:
+   top = (700 − 524) / 2 = 88. At 1024 × 700:
+     question    88–120  (32)
+     answers    140–224  (84): answer text row 140–184, key cap 190–218
+     message    236–292  (56)
+     statements 324–612  (8 × 36) */
+.q-stage,
+.example-frame {
+  --q-stage-height: 524;
+  --q-answers-top: 52;          /* question 0–32, gap 20 */
+  --q-answers-height: 84;       /* 3 border + 3 padding + 32 label + 12 + 28 key cap + 3 + 3 */
+  --q-answer-border: 3;         /* the chosen-answer outline (transparent until chosen) */
+  --q-answer-radius: 10;
+  --q-answer-offset: 150;       /* each answer unit is centered at 512 ∓ 150 */
+  --q-answer-slot-width: 280;   /* the most room an answer unit may take */
+  --q-message-top: 148;         /* answers end 136, gap 12 */
+  --q-message-height: 56;
+  --q-statements-top: 236;      /* message ends 204, gap 32 */
+  --example-scale: 0.68;        /* the instruction pages' example question */
+  --example-top: 228;           /* their top, below the column top (frame y 292) */
+}
+
+.q-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc((700 - var(--q-stage-height)) / 2 * var(--u));
+  height: calc(var(--q-stage-height) * var(--u));
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.q-question {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(32 * var(--u));
+  font-size: calc(24 * var(--u));
+  line-height: calc(32 * var(--u));
+  text-align: center;
+  white-space: nowrap;
+}
+
+.q-question .relation {
+  font-weight: 600;
+}
+
+.q-answers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--q-answers-top) * var(--u));
+  height: calc(var(--q-answers-height) * var(--u));
+}
+
+/* Answer units: each answer sits in a fixed slot centered at 512 ∓ offset,
+   with its key cap centered below it; neither moves with label length.
+   The unit's border (answer + key cap) is transparent until the answer is
+   chosen, so choosing shifts nothing. */
+.q-answer {
+  position: absolute;
+  top: 0;
+  width: calc(var(--q-answer-slot-width) * var(--u));
+  height: calc(var(--q-answers-height) * var(--u));
+  display: flex;
+  justify-content: center;
+}
+
+.q-answer.is-left {
+  left: calc(50% - (var(--q-answer-offset) + var(--q-answer-slot-width) / 2) * var(--u));
+}
+
+.q-answer.is-right {
+  left: calc(50% + (var(--q-answer-offset) - var(--q-answer-slot-width) / 2) * var(--u));
+}
+
+.q-answer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  height: 100%;
+  /* Border + vertical padding = 6, so the label stays at 146–178 and the
+     key cap at 190–218 whatever the border width. */
+  padding: calc((6 - var(--q-answer-border)) * var(--u)) calc(12 * var(--u));
+  border: calc(var(--q-answer-border) * var(--u)) solid transparent;
+  border-radius: calc(var(--q-answer-radius) * var(--u));
+}
+
+.q-label {
+  height: calc(32 * var(--u));
+  font-size: calc(24 * var(--u));
+  line-height: calc(32 * var(--u));
+  white-space: nowrap;
+}
+
+.chosen-outline .q-answer.is-chosen .q-answer-unit {
+  border-color: var(--ink);
+}
+
+/* A key cap that looks like a physical key: rounded, with a heavier bottom
+   edge. Still 28 × 28, so nothing moves. */
+.keycap {
+  flex: none;
+  width: calc(28 * var(--u));
+  height: calc(28 * var(--u));
+  border: calc(1 * var(--u)) solid var(--line);
+  border-bottom-width: calc(3 * var(--u));
+  border-radius: calc(6 * var(--u));
+  background: var(--paper);
+  font-size: calc(16 * var(--u));
+  line-height: calc(24 * var(--u));
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Always reserved. Line 1: the confirmation or the timeout message.
+   Line 2: "Press space to continue." */
+.q-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--q-message-top) * var(--u));
+  height: calc(var(--q-message-height) * var(--u));
+  /* 1 = (56 − 2 × 27) / 2: centers the two 27-px lines in the 56-px slot. */
+  padding-top: calc(1 * var(--u));
+  font-size: calc(18 * var(--u));
+  line-height: calc(27 * var(--u));
+  text-align: center;
+}
+
+.q-message-line {
+  height: calc(27 * var(--u));
+  white-space: nowrap;
+}
+
+.q-message-line.is-prompt {
+  color: var(--muted);
+}
+
+/* A left-aligned block in a fixed-width column centered on the page. The
+   width is display.statementsColumnWidthPx (set inline by the page); the
+   value here is only a fallback. No bullets, numbers or emphasis. */
+.q-statements {
+  position: absolute;
+  top: calc(var(--q-statements-top) * var(--u));
+  height: calc((var(--q-stage-height) - var(--q-statements-top)) * var(--u));
+  width: calc(600 * var(--u));
+  left: calc(50% - 300 * var(--u));
+  font-size: calc(22 * var(--u));
+  line-height: calc(36 * var(--u));
+  text-align: left;
+}
+
+.q-statement {
+  height: calc(36 * var(--u));
+}
+
+.is-hidden {
+  visibility: hidden;
+}
+
+/* -------------------------------------------------------- text screens -- */
+
+/* A 640-px column; the title sits top-left. */
+.text-screen {
+  position: absolute;
+  left: calc(50% - 320 * var(--u));
+  top: calc(64 * var(--u));
+  width: calc(640 * var(--u));
+}
+
+/* Centered text in the middle of the frame, for the continue screens
+   (intros, breaks) and the save screen. */
+.text-screen.is-centered {
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+/* Bold important words: Inter SemiBold, the one bold face loaded. */
+strong {
+  font-weight: 600;
+}
+
+.text-screen p {
+  margin: 0 0 calc(16 * var(--u));
+}
+
+.ts-title {
+  margin: 0 0 calc(16 * var(--u));
+  font-size: calc(28 * var(--u));
+  line-height: calc(36 * var(--u));
+  font-weight: 600;
+}
+
+/* A section heading under the title (the debrief's "Study details"):
+   body size, weight 600. */
+.ts-heading {
+  margin: calc(24 * var(--u)) 0 calc(8 * var(--u));
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  font-weight: 600;
+}
+
+/* The break screen's progress bar (60% of the column, 12 tall, rounded; no
+   count); the bonus reminder under "Take a short break…" is dark gold. */
+.ts-progress {
+  width: 60%;
+  height: calc(12 * var(--u));
+  margin: 0 auto calc(16 * var(--u));
+  border-radius: calc(6 * var(--u));
+  background: var(--track);
+  overflow: hidden;
+}
+
+.ts-progress-fill {
+  height: 100%;
+  border-radius: calc(6 * var(--u));
+  background: var(--accent);
+}
+
+.text-screen .ts-reminder {
+  color: var(--reminder);
+}
+
+.text-screen .ts-prompt {
+  margin-top: calc(32 * var(--u));
+  color: var(--muted);
+}
+
+.ts-actions {
+  margin-top: calc(32 * var(--u));
+  display: flex;
+  gap: calc(16 * var(--u));
+}
+
+/* The break screen: the bar, "Take a short break if you need one.", the
+   reminder and "Press space to continue.", each one line, their centers
+   evenly 54 apart (24 between the 30-tall lines; 33 = 54 − 6 − 15 under the
+   12-tall bar), and nothing below the last line, so the centered column
+   (`.is-centered`) centers exactly this group in the frame. */
+.text-screen.has-progress > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.text-screen.has-progress > * + * {
+  margin-top: calc(24 * var(--u));
+}
+
+.text-screen.has-progress > .ts-progress + * {
+  margin-top: calc(33 * var(--u));
+}
+
+.text-screen.has-progress > .ts-progress {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The instruction pages' example question: a question stage scaled by
+   --example-scale into the 640 column, at the same place on every step
+   (--example-top), so it never moves (only the text above it changes). The
+   example is static, so its message slot is never used: it is drawn
+   without it (below), the statements 32 under the answers, as the message
+   slot's lower gap is on the question screen. The stage is then 456 tall
+   (524 − 12 − 56). At frame y 292 and scale 0.68 the example leaves about
+   34 px of white space above its question and below its last statement,
+   above the Back and Next buttons (y 636), at 1024 × 700. The content stays
+   inside the 640 column (answers ±198, statements ±204 around the
+   center). */
+.example-frame,
+.example-frame > .q-stage {
+  --q-stage-height: 456;
+  --q-statements-top: 168;      /* answers end 136, gap 32 */
+}
+
+.example-frame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--example-top) * var(--u));
+  height: calc(var(--q-stage-height) * var(--example-scale) * var(--u));
+  overflow: hidden;
+}
+
+/* The stage is as wide as the column once scaled (640 / scale, not 1024),
+   so nothing overflows the frame sideways; every region of the stage is
+   centered, so its content is placed exactly as on a 1024-wide stage. */
+.example-frame > .q-stage {
+  top: 0;
+  left: 50%;
+  right: auto;
+  width: calc(640 / var(--example-scale) * var(--u));
+  transform: translateX(-50%) scale(var(--example-scale));
+  transform-origin: top center;
+}
+
+/* The example's key caps: at the example scale the question screen's
+   16-px letter would shrink to 11 px, so the letter is drawn larger (the
+   28 × 28 cap, its line box and the geometry are unchanged, so nothing
+   moves). */
+.example-frame .keycap {
+  font-size: calc(22 * var(--u));
+}
+
+/* Every example statement's text sits in its own span. */
+.example-statement-text {
+  display: inline-block;
+  line-height: calc(30 * var(--u));
+}
+
+/* Back / Next, fixed at y 636–676. */
+.nav-bar {
+  position: absolute;
+  left: calc(50% - 320 * var(--u));
+  width: calc(640 * var(--u));
+  top: calc(636 * var(--u));
+  height: calc(40 * var(--u));
+  display: flex;
+  justify-content: center;   /* Back and Next side by side */
+  gap: calc(16 * var(--u));
+  align-items: center;
+}
+
+.btn {
+  height: calc(40 * var(--u));
+  min-width: calc(96 * var(--u));
+  padding: 0 calc(24 * var(--u));
+  border: calc(1 * var(--u)) solid var(--line);
+  border-radius: calc(20 * var(--u));   /* pill */
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: calc(18 * var(--u));
+  line-height: calc(24 * var(--u));
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* Hover: a slight tint. */
+.btn:hover:not(:disabled):not(.is-dimmed),
+.jspsych-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--track) 70%, transparent);
+}
+
+.btn-primary:hover:not(:disabled):not(.is-dimmed) {
+  background: color-mix(in srgb, var(--accent) 85%, #000000);
+}
+
+/* Next during the minimum view time: dimmed, no countdown. */
+.btn.is-dimmed {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ------------------------------------------------------------- consent -- */
+
+/* The only screen that may scroll. */
+.consent {
+  width: calc(640 * var(--u));
+  margin: 0 auto;
+  padding: calc(48 * var(--u)) 0;
+  font-size: calc(17 * var(--u));
+  line-height: calc(26 * var(--u));
+}
+
+.consent p {
+  margin: 0 0 calc(12 * var(--u));
+}
+
+.consent-head {
+  margin-bottom: calc(24 * var(--u));
+  text-align: center;
+}
+
+.consent-title {
+  font-weight: 600;
+}
+
+.consent-list {
+  margin: 0 0 calc(12 * var(--u));
+  padding-left: calc(24 * var(--u));
+}
+
+.consent-list li {
+  margin-bottom: calc(12 * var(--u));
+}
+
+.consent a,
+.text-screen a {
+  color: var(--ink);
+}
+
+/* ------------------------------------------------- jsPsych integration -- */
+
+/* jsPsych's own stylesheet is not loaded (index.html); these rules cover the
+   few elements its plugins draw. The display element takes focus at every
+   trial start (keyboard events); it never shows a ring. */
+#jspsych-target:focus,
+#jspsych-target:focus-visible {
+  outline: none;
+}
+
+/* Plugin-drawn buttons that are not restyled in code (the browser check's
+   window-size prompt). */
+.jspsych-btn {
+  height: calc(40 * var(--u));
+  min-width: calc(96 * var(--u));
+  padding: 0 calc(24 * var(--u));
+  border: calc(1 * var(--u)) solid var(--line);
+  border-radius: calc(20 * var(--u));   /* pill, like .btn */
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: calc(18 * var(--u));
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* "Press space …" during a continue screen's minimum view (the main intro),
+   dimmed like Next on the instruction pages. */
+.ts-prompt.is-dimmed {
+  opacity: 0.4;
+}
+
+/* Keeps both Inter faces in use for the whole session (WebKit unloads an
+   unused face; see js/experiment.js mountFontKeepalive). Off screen, never
+   seen, never hit. */
+.font-keepalive {
+  position: fixed;
+  left: -1000px;
+  top: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.font-keepalive-regular {
+  font-weight: 400;
+}
+
+.font-keepalive-semibold {
+  font-weight: 600;
+}
+
+/* The browser-check screens are drawn in windows smaller than the frame
+   (--u is 1 px there): the 640 column flows in the page and narrows to the
+   window, so nothing scrolls. The plugin puts its "give up" button in a
+   paragraph right after the column. */
+.text-screen.is-flow {
+  position: static;
+  width: auto;
+  max-width: min(calc(640 * var(--u)), calc(100vw - 32px));
+  margin: calc(64 * var(--u)) auto 0;
+}
+
+.text-screen.is-flow + p {
+  max-width: min(calc(640 * var(--u)), calc(100vw - 32px));
+  margin: calc(16 * var(--u)) auto 0;
+}
+
+/* ---------------------------------------------- surveys (SurveyJS pages) -- */
+
+/* The questionnaire pages use @jspsych/plugin-survey (SurveyJS). These
+   rules make a SurveyJS page look like the other screens: the question in
+   the 640 column at the text-screen position, 20-px radios in full-width
+   rows, a centered row of 56 × 44 rating buttons with the end labels
+   underneath, plain text boxes, and Next at the right of the bottom bar
+   (y 636–676). SurveyJS's own frame, card background and spacing are
+   removed. Everything is scoped to the survey container that the plugin
+   creates. */
+.jspsych-survey-container {
+  --sjs-font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  position: absolute;
+  left: calc(50vw - 320 * var(--u));
+  top: calc(50vh - 286 * var(--u));     /* frame top + 64 */
+  width: calc(640 * var(--u));
+  font-family: inherit;
+  color: var(--ink);
+}
+
+/* Every state change is instant: no SurveyJS animations, such as the
+   follow-up text box fading in. SurveyJS reads the (now zero) animation
+   duration and finishes each change at once. */
+.jspsych-survey-container *,
+.jspsych-survey-container *::before,
+.jspsych-survey-container *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.jspsych-survey-container .sd-root-modern,
+.jspsych-survey-container .sd-root-modern__wrapper,
+.jspsych-survey-container .sd-container-modern,
+.jspsych-survey-container .sd-body,
+.jspsych-survey-container .sd-page,
+.jspsych-survey-container .sd-element--with-frame {
+  background: transparent;
+  box-shadow: none;
+  font-family: inherit;
+}
+
+.jspsych-survey-container .sv-scroll__wrapper,
+.jspsych-survey-container .sv-scroll__scroller,
+.jspsych-survey-container .sv-scroll__container {
+  height: auto;
+  overflow: visible;
+}
+
+.jspsych-survey-container .sv-scroll__scrollbar {
+  display: none;
+}
+
+/* Nothing on a survey page may clip text: SurveyJS's root scrolls
+   (`overflow: auto`) and would cut off anything wider than the column. */
+.jspsych-survey-container .sd-root-modern {
+  overflow: visible;
+}
+
+/* SurveyJS puts an (always empty) action bar after every question title;
+   beside a title that fills the column it would push the row 24 px past the
+   640 column. */
+.jspsych-survey-container .sd-action-title-bar.sd-action-bar--empty {
+  display: none;
+}
+
+.jspsych-survey-container .sd-root-modern--full-container,
+.jspsych-survey-container .sd-container-modern,
+.jspsych-survey-container .sd-root-modern .sd-container-modern .sd-body,
+.jspsych-survey-container .sd-page,
+.jspsych-survey-container .sd-element--with-frame,
+.jspsych-survey-container .sd-page__row,
+.jspsych-survey-container .sd-row {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  min-width: 0;
+  border-radius: 0;
+}
+
+/* A follow-up text box ("Please describe.") sits 16 under its question. */
+.jspsych-survey-container .sd-page__row + .sd-page__row {
+  margin-top: calc(16 * var(--u));
+}
+
+.jspsych-survey-container .sd-question__header {
+  margin: 0;
+  padding: 0;
+}
+
+/* The question: 22 / 32, weight 600. */
+.jspsych-survey-container .sd-question__title,
+.jspsych-survey-container .sd-element__title .sv-string-viewer {
+  margin: 0;
+  padding: 0;
+  font-size: calc(22 * var(--u));
+  line-height: calc(32 * var(--u));
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.jspsych-survey-container .sd-question__title {
+  margin-bottom: calc(16 * var(--u));
+}
+
+/* The follow-up box's label: body text. */
+.jspsych-survey-container .sd-page__row + .sd-page__row .sd-question__title,
+.jspsych-survey-container .sd-page__row + .sd-page__row .sd-element__title .sv-string-viewer {
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  font-weight: 400;
+}
+
+.jspsych-survey-container .sd-page__row + .sd-page__row .sd-question__title {
+  margin-bottom: calc(8 * var(--u));
+}
+
+.jspsych-survey-container .sd-question__content {
+  margin: 0;
+  padding: 0;
+}
+
+/* Radio rows: full-row targets at least 44 tall. */
+.jspsych-survey-container .sd-selectbase {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.jspsych-survey-container .sd-item.sd-radio {
+  margin: 0;
+  padding: 0;
+}
+
+.jspsych-survey-container .sd-selectbase__label {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  min-height: calc(44 * var(--u));
+  padding: calc(8 * var(--u));
+  border-radius: calc(4 * var(--u));
+  cursor: pointer;
+}
+
+.jspsych-survey-container .sd-item__control-label,
+.jspsych-survey-container .sd-item__control-label .sv-string-viewer {
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  color: var(--ink);
+}
+
+.jspsych-survey-container .sd-item__control-label {
+  padding: 0;
+}
+
+.jspsych-survey-container .sd-radio__decorator {
+  flex: none;
+  width: calc(20 * var(--u));
+  height: calc(20 * var(--u));
+  margin: 0;
+  border: calc(2 * var(--u)) solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.jspsych-survey-container .sd-radio--checked .sd-radio__decorator {
+  border: calc(6 * var(--u)) solid var(--ink);
+  background: var(--paper);
+}
+
+.jspsych-survey-container .sd-radio--checked .sd-radio__decorator::after {
+  display: none;
+}
+
+.jspsych-survey-container .sd-item__control:focus-visible + .sd-item__decorator {
+  outline: calc(3 * var(--u)) solid var(--accent);
+  outline-offset: calc(2 * var(--u));
+}
+
+/* Text boxes: 160 tall; a follow-up box is 90. */
+.jspsych-survey-container textarea.sd-comment,
+.jspsych-survey-container textarea.sd-input {
+  display: block;
+  width: 100%;
+  height: calc(160 * var(--u));
+  min-height: 0;
+  margin: 0;
+  padding: calc(8 * var(--u)) calc(12 * var(--u));
+  border: calc(1 * var(--u)) solid var(--line);
+  border-radius: calc(4 * var(--u));
+  background: var(--paper);
+  box-shadow: none;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  resize: none;
+}
+
+.jspsych-survey-container .sd-page__row + .sd-page__row textarea.sd-comment {
+  height: calc(90 * var(--u));
+}
+
+.jspsych-survey-container textarea.sd-comment:focus,
+.jspsych-survey-container textarea.sd-input:focus {
+  box-shadow: none;
+  outline: calc(3 * var(--u)) solid var(--accent);
+  outline-offset: calc(2 * var(--u));
+}
+
+/* Rating: five 56 × 44 buttons, the end labels underneath.
+   SurveyJS lets the rating scroll sideways (`.sd-rating`, a scrollable
+   container: `overflow-x: auto`); it never needs to here, and scrolling
+   would clip the end labels' italic overhang. */
+.jspsych-survey-container .sd-rating,
+.jspsych-survey-container .sd-scrollable-container {
+  overflow: visible;
+}
+
+/* The row (buttons and end labels) is centered in the 640 column; the
+   question above stays left-aligned.
+   SurveyJS sizes `.sd-rating` to its content, so both it and the
+   fixed-width fieldset inside it get auto side margins: whichever of the
+   two is narrower than its parent is centered in it, in every browser. */
+.jspsych-survey-container .sd-question__content .sd-rating {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jspsych-survey-container .sd-rating fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(8 * var(--u));
+  width: calc(5 * 56 * var(--u) + 4 * 8 * var(--u));
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+}
+
+.jspsych-survey-container .sd-rating__item {
+  order: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(56 * var(--u));
+  min-width: 0;
+  height: calc(44 * var(--u));
+  margin: 0;
+  padding: 0;
+  border: calc(1 * var(--u)) solid var(--line);
+  border-radius: calc(4 * var(--u));
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink);
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  cursor: pointer;
+}
+
+.jspsych-survey-container .sd-rating__item .sd-rating__item-text,
+.jspsych-survey-container .sd-rating__item .sv-string-viewer {
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  color: var(--ink);
+}
+
+.jspsych-survey-container .sd-rating__item--selected {
+  border: calc(2 * var(--u)) solid var(--ink);
+  background: transparent;
+  font-weight: 600;
+}
+
+.jspsych-survey-container .sd-rating__item--selected .sd-rating__item-text,
+.jspsych-survey-container .sd-rating__item--selected .sv-string-viewer {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.jspsych-survey-container .sd-rating__item:focus-within {
+  outline: calc(3 * var(--u)) solid var(--accent);
+  outline-offset: calc(2 * var(--u));
+}
+
+.jspsych-survey-container .sd-rating fieldset .sd-rating__min-text,
+.jspsych-survey-container .sd-rating fieldset .sd-rating__max-text {
+  order: 1;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: calc(16 * var(--u));
+  line-height: calc(24 * var(--u));
+  color: var(--muted);
+}
+
+.jspsych-survey-container .sd-rating__min-text .sv-string-viewer,
+.jspsych-survey-container .sd-rating__max-text .sv-string-viewer {
+  font-size: calc(16 * var(--u));
+  line-height: calc(24 * var(--u));
+  color: var(--muted);
+  /* SurveyJS clips the label text (`overflow: hidden`, for ellipses);
+     italic glyphs lean past their box, so the last letter would be cut. The
+     padding gives the overhang room inside the label's own box. */
+  overflow: visible;
+  padding-right: 0.2em;
+}
+
+.jspsych-survey-container .sd-rating fieldset .sd-rating__max-text {
+  order: 2;
+  margin-left: auto;
+}
+
+/* Next (`.btn.btn-primary`) at the right of the bottom bar, y 636–676. */
+.jspsych-survey-container .sd-root-modern .sd-container-modern .sd-footer.sd-body__navigation {
+  position: fixed;
+  left: calc(50vw - 320 * var(--u));
+  top: calc(50vh - 350 * var(--u) + 636 * var(--u));
+  width: calc(640 * var(--u));
+  height: calc(40 * var(--u));
+  margin: 0;
+  padding: 0;
+  display: flex;
+  /* Next where the instruction pages put it: right of center, as if a
+     96-wide Back and the 16 gap stood to its left. */
+  justify-content: center;
+  padding-left: calc((96 + 16) * var(--u));
+  align-items: center;
+}
+
+.jspsych-survey-container .sd-navigation__complete-btn,
+.jspsych-survey-container .sd-btn {
+  height: calc(40 * var(--u));
+  min-width: calc(96 * var(--u));
+  margin: 0;
+  padding: 0 calc(24 * var(--u));
+  border: calc(1 * var(--u)) solid var(--accent);
+  border-radius: calc(20 * var(--u));   /* pill, like .btn */
+  background: var(--accent);
+  box-shadow: none;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: calc(18 * var(--u));
+  line-height: calc(24 * var(--u));
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.jspsych-survey-container .sd-navigation__complete-btn:hover {
+  background: color-mix(in srgb, var(--accent) 85%, #000000);
+}

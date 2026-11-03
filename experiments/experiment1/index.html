@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Experiment</title>
+
+  <!-- jsPsych and its plugins, at the versions the experiment ran with -->
+  <script src="https://unpkg.com/jspsych@8.2.3"></script>
+  <link rel="stylesheet" href="https://unpkg.com/jspsych@8.2.3/css/jspsych.css">
+
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-instructions@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-browser-check@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey@4.0.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@4.0.0/css/survey.css">
+
+  <!-- One typeface, Inter Tight, throughout -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="styles/experiment.css">
+  <link rel="stylesheet" href="styles/help.css">
+</head>
+<body>
+  <div id="loading-screen" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#555;">
+    <div style="font-size:1.2rem;margin-bottom:1.5rem;">Loading experiment, please wait&hellip;</div>
+    <div style="width:300px;height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;">
+      <div id="loading-progress-bar" style="width:0%;height:100%;background:#4a90d9;border-radius:4px;transition:width 0.2s;"></div>
+    </div>
+    <div id="loading-progress-text" style="margin-top:0.5rem;font-size:0.85rem;color:#888;"></div>
+  </div>
+
+  <div id="jspsych-target"></div>
+
+  <script type="module">
+    import('./js/experiment.js').catch(err => {
+      console.error('[Experiment] Module load failed:', err);
+      var ls = document.getElementById('loading-screen'); if (ls) ls.remove();
+      document.getElementById('jspsych-target').innerHTML =
+        '<div style="padding:2rem;color:red;max-width:700px;margin:2rem auto;font-family:sans-serif;">' +
+        '<h2>Module failed to load</h2>' +
+        '<p><b>' + err.message + '</b></p>' +
+        '<pre style="font-size:12px;overflow:auto;background:#fdf2f2;padding:1rem;">' + err.stack + '</pre></div>';
+    });
+  </script>
+</body>
+</html>

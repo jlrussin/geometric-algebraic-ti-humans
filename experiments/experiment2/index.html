@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Experiment</title>
+
+  <!-- jsPsych 8.2.3 and its plugins, pinned. jsPsych's own stylesheet is not loaded:
+       styles/experiment.css styles every screen. -->
+  <script src="https://unpkg.com/jspsych@8.2.3"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-instructions@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-browser-check@2.1.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey@4.0.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@4.0.0/css/survey.css">
+
+  <!-- Inter 400 and 600, served with the page. The @font-face rules use font-display: block,
+       and the experiment waits for both faces before the first screen. -->
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- After survey.css, so its overrides win. -->
+  <link rel="stylesheet" href="styles/experiment.css">
+</head>
+<body>
+  <!-- Loading screen. Its text comes from js/copy.js; experiment.js removes it before the
+       first screen. -->
+  <div id="loading-screen" class="frame no-select">
+    <div class="text-screen"><p id="loading-text"></p></div>
+  </div>
+
+  <div id="jspsych-target"></div>
+
+  <script type="module">
+    async function start() {
+      const [{ loading }, { CONFIG }] = await Promise.all([
+        import('./js/copy.js'),
+        import('./js/config.js'),
+      ]);
+      document.getElementById('loading-text').innerHTML = loading(CONFIG);
+      await import('./js/experiment.js');
+    }
+    // A module failed to load (or `?assignment=` is not a row number, js/mode.js): show the
+    // build-error words of js/copy.js `buildError`, typed here too because copy.js may be the
+    // module that failed, then the error's message.
+    start().catch(async (err) => {
+      console.error('[Start] Module load failed:', err);
+      let message = 'Something went wrong while setting up the study. '
+        + 'Please return this study on Prolific. Sorry for the trouble.';
+      try {
+        const [{ buildError }, { CONFIG }] = await Promise.all([
+          import('./js/copy.js'),
+          import('./js/config.js'),
+        ]);
+        message = buildError(CONFIG);
+      } catch (_) { /* keep the typed words */ }
+      const ls = document.getElementById('loading-screen');
+      if (ls) ls.remove();
+      const box = document.createElement('div');
+      box.className = 'frame';
+      box.innerHTML = '<div class="text-screen"><p></p><p></p></div>';
+      const [words, reason] = box.querySelectorAll('p');
+      words.textContent = message;
+      reason.textContent = err && err.message ? err.message : String(err);
+      document.getElementById('jspsych-target').replaceChildren(box);
+    });
+  </script>
+</body>
+</html>

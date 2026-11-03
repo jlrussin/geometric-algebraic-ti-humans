@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# R
+.Rhistory
+.RData
+
+# Data tables; data/MANIFEST.yaml records their digests
+data/**/*.parquet
+
+# Inputs to the R models, written by `geo-alg-ti-humans prepare`
+analysis/inputs/
+
+# Stimulus images, downloaded and cropped by `geo-alg-ti-humans images`
+experiments/*/media/
+
+# Figures are regenerated from the data tables
+figures/out/
+
+# macOS
+.DS_Store

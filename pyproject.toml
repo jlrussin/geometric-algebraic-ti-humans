@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "geometric-algebraic-ti-humans"
+version = "0.1.0"
+description = "Human experiments for the paper 'Geometric and algebraic inference in humans and neural networks'"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Jacob Russin" },
+    { name = "Joonhwa Kim" },
+    { name = "Ellie Pavlick" },
+    { name = "Michael J. Frank" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "matplotlib>=3.11",
+    "numpy>=2",
+    "pandas>=2.2",
+    "pillow>=12.1,<13",
+    "pyarrow>=17",
+    "pyyaml>=6",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[project.scripts]
+geo-alg-ti-humans = "geo_alg_ti_humans.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jlrussin/geometric-algebraic-ti-humans"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geo_alg_ti_humans"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "experiments", "data", "analysis", "figures", "results", "tests", "uv.lock", "renv.lock", ".Rprofile", "renv/activate.R", "REPRODUCE.md", "CITATION.cff"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

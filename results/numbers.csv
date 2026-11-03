@@ -1,0 +1,130 @@
+id,experiment,site,printed,computed,source,match
+1-1,1,"Results, Symbolic distance effects",40,40,summaries.counts_experiment1:kept,True
+1-2,1,"Results, Symbolic distance effects",< .001,< .001,R:iwl_accuracy::symbolic_distance:p_value,True
+1-3,1,"Results, Symbolic distance effects",< .001,< .001,R:icl_accuracy::symbolic_distance:p_value,True
+1-4,1,"Results, Symbolic distance effects",< .001,< .001,R:accuracy_by_test::symbolic_distance:phase:p_value,True
+1-5,1,"Results, Symbolic distance effects",< .001,< .001,R:rt_by_test::symbolic_distance:phase:p_value,True
+1-6,1,"Results, Symbolic distance effects",< .001,< .001,R:icl_rt::symbolic_distance:p_value,True
+1-7,1,"Results, Symbolic distance effects",.442,.442,R:iwl_rt::symbolic_distance:p_value,True
+1-8,1,"Methods, Human experiments, Experiment 1, Participants",65,65,summaries.counts_experiment1:people,True
+1-9,1,"Methods, Human experiments, Experiment 1, Participants",65,65,summaries.counts_experiment1:people,True
+1-10,1,"Methods, Human experiments, Experiment 1, Participants",13,13,summaries.counts_experiment1:not_completed,True
+1-11,1,"Methods, Human experiments, Experiment 1, Participants",11,11,summaries.counts_experiment1:failed_comprehension,True
+1-12,1,"Methods, Human experiments, Experiment 1, Participants",1,1,summaries.counts_experiment1:low_learning_accuracy,True
+1-13,1,"Methods, Human experiments, Experiment 1, Participants",40,40,summaries.counts_experiment1:kept,True
+1-14,1,"Methods, Human experiments, Experiment 1, Participants",40,40,summaries.counts_experiment1:kept,True
+1-15,1,"Methods, Human experiments, Experiment 1, Statistical analysis",4,4,summaries.counts_experiment1:rt_outliers,True
+1-16,1,"Methods, Human experiments, Experiment 1, Statistical analysis","2,478","2,478",summaries.counts_experiment1:rt_trials,True
+1-17,1,"Methods, Human experiments, Experiment 1, Statistical analysis",0.16%,0.16%,summaries.counts_experiment1:rt_outlier_pct,True
+1-18,1,"Extended methods, Human experiments, Experiment 1, Participants",65,65,summaries.counts_experiment1:people,True
+1-19,1,"Extended methods, Human experiments, Experiment 1, Participants",65,65,summaries.counts_experiment1:people,True
+1-20,1,"Extended methods, Human experiments, Experiment 1, Participants",13,13,summaries.counts_experiment1:not_completed,True
+1-21,1,"Extended methods, Human experiments, Experiment 1, Participants",11,11,summaries.counts_experiment1:failed_comprehension,True
+1-22,1,"Extended methods, Human experiments, Experiment 1, Participants",1,1,summaries.counts_experiment1:low_learning_accuracy,True
+1-23,1,"Extended methods, Human experiments, Experiment 1, Participants",40,40,summaries.counts_experiment1:kept,True
+1-24,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,600","1,600",summaries.counts_experiment1:icl_trials,True
+1-25,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,600","1,600",summaries.counts_experiment1:iwl_trials,True
+1-26,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,252","1,252",summaries.counts_experiment1:icl_rt_trials,True
+1-27,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,226","1,226",summaries.counts_experiment1:iwl_rt_trials,True
+1-28,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis",one,one,summaries.counts_experiment1:icl_rt_outliers,True
+1-29,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis",three,three,summaries.counts_experiment1:iwl_rt_outliers,True
+1-30,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,251","1,251",summaries.counts_experiment1:icl_rt_trials_kept,True
+1-31,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","1,223","1,223",summaries.counts_experiment1:iwl_rt_trials_kept,True
+1-32,1,"Extended methods, Human experiments, Experiment 1, Statistical analysis","2,474","2,474",summaries.counts_experiment1:rt_trials_kept,True
+1-33,1,"Extended results, Human experiments, Experiment 1, Learning phase",53%,53%,summaries.descriptives_experiment1:learning_accuracy_masked_first_pct,True
+1-34,1,"Extended results, Human experiments, Experiment 1, Learning phase",86%,86%,summaries.descriptives_experiment1:learning_accuracy_masked_last_pct,True
+1-35,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",5,5,summaries.descriptives_experiment1:icl_rt_adjacent_pairs_s,True
+1-36,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",15,15,summaries.descriptives_experiment1:icl_rt_longest_pair_s,True
+1-37,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",1.7 and 3.3,1.7 and 3.3,summaries.descriptives_experiment1:iwl_rt_pair_range_s,True
+1-38,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",22,22,summaries.descriptives_experiment1:accuracy_slope_iwl_positive_icl_negative,True
+1-39,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",40,40,summaries.descriptives_experiment1:slope_participants,True
+1-40,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",39,39,summaries.descriptives_experiment1:rt_slope_icl_positive,True
+1-41,1,"Extended results, Human experiments, Experiment 1, Additional symbolic-distance results",40,40,summaries.descriptives_experiment1:slope_participants,True
+1-42,1,"Extended results, Human experiments, Experiment 1, Arbitrage test",72.5%,72.5%,summaries.descriptives_experiment1:arbitrage_context_pct,True
+1-43,1,"Extended results, Human experiments, Experiment 1, Arbitrage test",40,40,summaries.descriptives_experiment1:arbitrage_participants,True
+1-44,1,"Extended results, Human experiments, Experiment 1, Arbitrage test",15,15,summaries.descriptives_experiment1:arbitrage_context_followers,True
+2-1,2,"Results, Content effects",49,49,summaries.counts_experiment2:retained_congruent,True
+2-2,2,"Results, Content effects",50,50,summaries.counts_experiment2:retained_shuffled,True
+2-3,2,"Results, Content effects",< .001,< .001,R:accuracy:retained:condition:p_value,True
+2-4,2,"Results, Content effects",< .001,< .001,R:accuracy:retained:condition:log_distance:p_value,True
+2-5,2,"Results, Content effects",< .001,< .001,R:accuracy:retained:slope_congruent:p_value,True
+2-6,2,"Results, Content effects",< .001,< .001,R:accuracy:retained:slope_shuffled:p_value,True
+2-7,2,"Results, Content effects",< .001,< .001,R:rt:retained:condition:log_distance:p_value,True
+2-8,2,"Results, Content effects",< .001,< .001,R:rt:retained:slope_shuffled:p_value,True
+2-9,2,"Results, Content effects",.050,.050,R:rt:retained:slope_congruent:p_value,True
+2-10,2,"Methods, Human experiments, Experiment 2, Participants",132,132,summaries.counts_experiment2:people,True
+2-11,2,"Methods, Human experiments, Experiment 2, Participants",14,14,summaries.counts_experiment2:not_completed,True
+2-12,2,"Methods, Human experiments, Experiment 2, Participants",18,18,summaries.counts_experiment2:random_responder,True
+2-13,2,"Methods, Human experiments, Experiment 2, Participants",1,1,summaries.counts_experiment2:fast_responses,True
+2-14,2,"Methods, Human experiments, Experiment 2, Participants",49,49,summaries.counts_experiment2:retained_congruent,True
+2-15,2,"Methods, Human experiments, Experiment 2, Participants",50,50,summaries.counts_experiment2:retained_shuffled,True
+2-16,2,"Methods, Human experiments, Experiment 2, Participants",99,99,summaries.counts_experiment2:retained,True
+2-17,2,"Extended methods, Human experiments, Experiment 2, Participants",132,132,summaries.counts_experiment2:people,True
+2-18,2,"Extended methods, Human experiments, Experiment 2, Participants",132,132,summaries.counts_experiment2:people,True
+2-19,2,"Extended methods, Human experiments, Experiment 2, Participants",14,14,summaries.counts_experiment2:not_completed,True
+2-20,2,"Extended methods, Human experiments, Experiment 2, Participants",2,2,summaries.counts_experiment2:not_completed_congruent,True
+2-21,2,"Extended methods, Human experiments, Experiment 2, Participants",12,12,summaries.counts_experiment2:not_completed_shuffled,True
+2-22,2,"Extended methods, Human experiments, Experiment 2, Participants",1,1,summaries.counts_experiment2:random_responder_congruent,True
+2-23,2,"Extended methods, Human experiments, Experiment 2, Participants",17,17,summaries.counts_experiment2:random_responder_shuffled,True
+2-24,2,"Extended methods, Human experiments, Experiment 2, Participants",2,2,summaries.counts_experiment2:all_finishers_same_key,True
+2-25,2,"Extended methods, Human experiments, Experiment 2, Participants",1,1,summaries.counts_experiment2:fast_responses_shuffled,True
+2-26,2,"Extended methods, Human experiments, Experiment 2, Participants",49,49,summaries.counts_experiment2:retained_congruent,True
+2-27,2,"Extended methods, Human experiments, Experiment 2, Participants",50,50,summaries.counts_experiment2:retained_shuffled,True
+2-28,2,"Extended methods, Human experiments, Experiment 2, Participants",One,One,summaries.counts_experiment2:reloaded_shuffled,True
+2-29,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis","4,752","4,752",summaries.counts_experiment2:questions,True
+2-30,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis",1,1,summaries.counts_experiment2:timeouts_congruent,True
+2-31,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis",19,19,summaries.counts_experiment2:timeouts_shuffled,True
+2-32,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis","4,010","4,010",summaries.counts_experiment2:rt_questions,True
+2-33,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis",22,22,summaries.counts_experiment2:rt_outliers,True
+2-34,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis",0.55%,0.55%,summaries.counts_experiment2:rt_outlier_pct,True
+2-35,2,"Extended methods, Human experiments, Experiment 2, Statistical analysis","3,988","3,988",summaries.counts_experiment2:rt_questions_kept,True
+2-36,2,"Extended results, Human experiments, Experiment 2, Robustness",two,two,summaries.counts_experiment2:all_finishers_same_key,True
+2-37,2,"Extended results, Human experiments, Experiment 2, Robustness",one,one,summaries.counts_experiment2:all_finishers_fast_responses,True
+2-38,2,"Extended results, Human experiments, Experiment 2, Robustness",49,49,summaries.counts_experiment2:all_finishers_congruent,True
+2-39,2,"Extended results, Human experiments, Experiment 2, Robustness",66,66,summaries.counts_experiment2:all_finishers_shuffled,True
+2-40,2,"Extended results, Human experiments, Experiment 2, Robustness",< .001,< .001,"max(R:accuracy:all_finishers:condition:p_value, R:accuracy:all_finishers:condition:log_distance:p_value, R:rt:all_finishers:condition:p_value, R:rt:all_finishers:condition:log_distance:p_value)",True
+2-41,2,"Extended results, Human experiments, Experiment 2, Robustness",30,30,summaries.counts_experiment2:wave1_congruent,True
+2-42,2,"Extended results, Human experiments, Experiment 2, Robustness",13,13,summaries.counts_experiment2:wave1_shuffled,True
+2-43,2,"Extended results, Human experiments, Experiment 2, Robustness",19,19,summaries.counts_experiment2:wave2_congruent,True
+2-44,2,"Extended results, Human experiments, Experiment 2, Robustness",37,37,summaries.counts_experiment2:wave2_shuffled,True
+2-45,2,"Extended results, Human experiments, Experiment 2, Robustness",< .001,< .001,"max(R:accuracy_waves:retained:condition:p_value, R:accuracy_waves:retained:condition:log_distance:p_value, R:rt_waves:retained:condition:p_value, R:rt_waves:retained:condition:log_distance:p_value)",True
+2-46,2,"Extended results, Human experiments, Experiment 2, Robustness",>= .327,>= .327,"min(R:accuracy_waves:retained:condition:wave:p_value, R:accuracy_waves:retained:condition:log_distance:wave:p_value, R:rt_waves:retained:condition:wave:p_value, R:rt_waves:retained:condition:log_distance:wave:p_value)",True
+2-47,2,"Extended results, Human experiments, Experiment 2, Robustness",< .001,< .001,"max(R:accuracy_without_round_2:retained:condition:p_value, R:accuracy_without_round_2:retained:condition:log_distance:p_value, R:rt_without_round_2:retained:condition:p_value, R:rt_without_round_2:retained:condition:log_distance:p_value)",True
+2-48,2,"Extended results, Human experiments, Experiment 2, Robustness",seven,seven,summaries.counts_experiment2:second_round_congruent,True
+2-49,2,"Extended results, Human experiments, Experiment 2, Robustness",99,99,"same(R:accuracy_leave_one_out:retained:refits:estimate, R:rt_leave_one_out:retained:refits:estimate)",True
+2-50,2,"Extended results, Human experiments, Experiment 2, Robustness",seven,seven,summaries.counts_experiment2:second_round_congruent,True
+2-51,2,"Extended results, Human experiments, Experiment 2, Robustness",.050,.050,R:rt:retained:slope_congruent:p_value,True
+2-52,2,"Extended results, Human experiments, Experiment 2, Robustness",.047 to .069,.047 to .069,"range(R:rt:all_finishers:slope_congruent:p_value, R:rt_waves:retained:slope_congruent:p_value, R:rt_without_round_2:retained:slope_congruent:p_value)",True
+2-53,2,"Extended results, Human experiments, Experiment 2, Robustness, figure caption",49,49,summaries.counts_experiment2:all_finishers_congruent,True
+2-54,2,"Extended results, Human experiments, Experiment 2, Robustness, figure caption",66,66,summaries.counts_experiment2:all_finishers_shuffled,True
+2-55,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.76,.76,summaries.descriptives_experiment2:conflict_accuracy_d1,True
+2-56,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.95,.95,summaries.descriptives_experiment2:agree_accuracy_d1,True
+2-57,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.56--.61,.56--.61,summaries.descriptives_experiment2:conflict_accuracy_d2_d6,True
+2-58,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.83--.87,.83--.87,summaries.descriptives_experiment2:agree_accuracy_d2_d6,True
+2-59,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",-1.749,-1.749,R:agree_conflict_accuracy:retained:type:estimate,True
+2-60,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",0.117,0.117,R:agree_conflict_accuracy:retained:type:std_error,True
+2-61,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",-14.94,-14.94,R:agree_conflict_accuracy:retained:type:statistic,True
+2-62,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",< .001,< .001,R:agree_conflict_accuracy:retained:type:p_value,True
+2-63,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.783,.783,R:agree_conflict_accuracy:retained:type:log_distance:p_value,True
+2-64,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.018,.018,R:agree_conflict_accuracy_participant_level:retained:type:log_distance:p_value,True
+2-65,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",0.084,0.084,R:agree_conflict_rt:retained:type:estimate,True
+2-66,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",0.029,0.029,R:agree_conflict_rt:retained:type:std_error,True
+2-67,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",1668.44,1668.44,R:agree_conflict_rt:retained:type:df,True
+2-68,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",2.93,2.93,R:agree_conflict_rt:retained:type:statistic,True
+2-69,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.003,.003,R:agree_conflict_rt:retained:type:p_value,True
+2-70,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.535,.535,R:agree_conflict_rt_participant_level:retained:type:p_value,True
+2-71,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.772,.772,R:agree_conflict_rt_all_answered:retained:type:p_value,True
+2-72,2,"Extended results, Human experiments, Experiment 2, Agree and conflict questions",.002,.002,R:agree_conflict_rt_waves:retained:type:wave:p_value,True
+2-73,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",1.9,1.9,summaries.descriptives_experiment2:median_rt_s_congruent,True
+2-74,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",-3.3%,-3.3%,summaries.descriptives_experiment2:median_slope_pct_congruent,True
+2-75,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",10.3,10.3,summaries.descriptives_experiment2:median_rt_s_shuffled,True
+2-76,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",+9.6%,+9.6%,summaries.descriptives_experiment2:median_slope_pct_shuffled,True
+2-77,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",.48,.48,summaries.descriptives_experiment2:spearman_rho_congruent,True
+2-78,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",.61,.61,summaries.descriptives_experiment2:spearman_rho_shuffled,True
+2-79,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",14%,14%,summaries.descriptives_experiment2:shuffled_slope_pct_never,True
+2-80,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",16%,16%,summaries.descriptives_experiment2:shuffled_slope_pct_rarely,True
+2-81,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports",0--5%,0--5%,summaries.descriptives_experiment2:shuffled_slope_pct_other_answers,True
+2-82,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports, figure panels A and B",49,49,summaries.descriptives_experiment2:statements_answered_congruent,True
+2-83,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports, figure panels A and B",50,50,summaries.descriptives_experiment2:statements_answered_shuffled,True
+2-84,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports, figure panels A and B",48,48,summaries.descriptives_experiment2:knowledge_answered_congruent,True
+2-85,2,"Extended results, Human experiments, Experiment 2, Strategies and self-reports, figure panels A and B",50,50,summaries.descriptives_experiment2:knowledge_answered_shuffled,True

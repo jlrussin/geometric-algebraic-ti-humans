@@ -1,0 +1,15 @@
+experiment,model,set,group,term1,term2,estimate,observations,participants
+2,accuracy,all_finishers,participant,(Intercept),,1.14021540097892,5520,115
+2,accuracy,all_finishers,participant,log_distance,,0.270896094755329,5520,115
+2,accuracy,all_finishers,participant,(Intercept),log_distance,0.165370207198011,5520,115
+2,accuracy,retained,participant,(Intercept),,1.17572189398876,4752,99
+2,accuracy,retained,participant,log_distance,,0.252082530437682,4752,99
+2,accuracy,retained,participant,(Intercept),log_distance,-0.0199133685795797,4752,99
+2,rt,all_finishers,participant,(Intercept),,0.774413846470089,4384,115
+2,rt,all_finishers,participant,log_distance,,0.212288090603257,4384,115
+2,rt,all_finishers,participant,(Intercept),log_distance,0.755820887669489,4384,115
+2,rt,all_finishers,residual,,,0.573354057935315,4384,115
+2,rt,retained,participant,(Intercept),,0.791987713159108,3988,99
+2,rt,retained,participant,log_distance,,0.217514784244408,3988,99
+2,rt,retained,participant,(Intercept),log_distance,0.75621548961113,3988,99
+2,rt,retained,residual,,,0.566575482939122,3988,99
